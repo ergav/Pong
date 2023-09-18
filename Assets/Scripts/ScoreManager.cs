@@ -23,8 +23,8 @@ public class ScoreManager : MonoBehaviour
         _restartOnHit[0].AddScoreRight += AddPointRight;
         _restartOnHit[1].AddScoreLeft += AddPointLeft;
         
-        scoreText[0].text = playerLeftscore.ToString();
-        scoreText[1].text = playerRightscore.ToString();
+        scoreText[0].text = "0" + playerLeftscore.ToString();
+        scoreText[1].text = "0" + playerLeftscore.ToString();
 
     }
 
@@ -32,7 +32,16 @@ public class ScoreManager : MonoBehaviour
     {
         Debug.Log("Left Point Added");
         playerLeftscore += i;
-        scoreText[0].text = playerLeftscore.ToString();
+        if (playerLeftscore < 10)
+        {
+            scoreText[0].text = "0" + playerLeftscore.ToString();
+
+        }
+        else
+        {
+            scoreText[0].text = playerLeftscore.ToString();
+
+        }
     }
     
     private void AddPointRight(int i)
@@ -40,7 +49,16 @@ public class ScoreManager : MonoBehaviour
         Debug.Log("Right Point Added");
 
         playerRightscore += i;
-        scoreText[1].text = playerRightscore.ToString();
+        if (playerRightscore < 10)
+        {
+            scoreText[1].text = "0" + playerRightscore.ToString();
+
+        }
+        else
+        {
+            scoreText[1].text = playerRightscore.ToString();
+
+        }
 
     }
 }
