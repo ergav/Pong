@@ -25,7 +25,6 @@ public class ScoreManager : MonoBehaviour
         
         scoreText[0].text = "0" + playerLeftscore.ToString();
         scoreText[1].text = "0" + playerLeftscore.ToString();
-
     }
 
     private void AddPointLeft(int i)
@@ -35,12 +34,10 @@ public class ScoreManager : MonoBehaviour
         if (playerLeftscore < 10)
         {
             scoreText[0].text = "0" + playerLeftscore.ToString();
-
         }
         else
         {
             scoreText[0].text = playerLeftscore.ToString();
-
         }
     }
     
@@ -52,13 +49,10 @@ public class ScoreManager : MonoBehaviour
         if (playerRightscore < 10)
         {
             scoreText[1].text = "0" + playerRightscore.ToString();
-
         }
         else
         {
             scoreText[1].text = playerRightscore.ToString();
-
         }
-
     }
 }

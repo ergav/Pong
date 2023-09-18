@@ -14,17 +14,28 @@ public class PongBall : MonoBehaviour
 
     private float initialSpeed;
 
+    private bool moving;
+
     private void Start()
     {
         // Set the initial direction of the object
         _direction = new Vector2(1, 1).normalized;
         initialSpeed = _moveSpeed;
+        StartCoroutine(StartMoving());
     }
 
     private void Update()
     {
         // Move the object in the current direction
-        transform.position += (Vector3)_direction * (_moveSpeed * Time.deltaTime);
+
+        if (moving)
+        {
+            transform.position += (Vector3)_direction * (_moveSpeed * Time.deltaTime);
+        }
+        else
+        {
+            transform.position += Vector3.zero;
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -40,7 +51,15 @@ public class PongBall : MonoBehaviour
 
     public void ResetBall()
     {
+        moving = false;
         transform.position = Vector3.zero;
         _moveSpeed = initialSpeed;
+        StartCoroutine(StartMoving());
+    }
+
+    IEnumerator StartMoving()
+    {
+        yield return new WaitForSeconds(1);
+        moving = true;
     }
 }
